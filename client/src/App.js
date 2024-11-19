@@ -1,9 +1,23 @@
 import './App.css';
-
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
+import Login from './pages/login';
 function App() {
   return (
-   <h1>sridharan</h1>
+     <Main/>
   );
+}
+
+function Main(){
+
+   return(
+    <Router>
+        <Routes>
+         <Route path='/' element={<Login/>}/>
+
+        </Routes>
+    </Router>
+    
+   )
 }
 
 export default App;
