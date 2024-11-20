@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 
-const Historypage = () => {
+const HistoryPage = () => {
   const navigate = useNavigate(); // Ensure useNavigate is imported
 
   return (
@@ -38,4 +38,4 @@ const Historypage = () => {
   );
 };
 
-export default Historypage;
+export default HistoryPage;

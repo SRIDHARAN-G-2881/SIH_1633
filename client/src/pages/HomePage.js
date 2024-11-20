@@ -4,7 +4,7 @@ import EventCard from "../components/EventCard";
 import ProfileCard from "../components/ProfileCard";
 import Navbar from "../components/Navbar";
 
-const Ahome = () => {
+const HomePage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-200">
       <Header />
@@ -40,4 +40,4 @@ const Ahome = () => {
   );
 };
 
-export default Ahome;
+export default HomePage;

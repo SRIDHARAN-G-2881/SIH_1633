@@ -7,6 +7,7 @@ const ScheduleMeetPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    alert(`Scheduled Time: ${hour}:${minute} ${meridian}`);
   };
 
   const generateOptions = (start, end) => {
