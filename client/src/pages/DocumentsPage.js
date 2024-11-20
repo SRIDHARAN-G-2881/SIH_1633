@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar'; // Import Navbar component
 
-const Documentpage = () => {
+const DocumentsPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <header className="p-4 bg-blue-500 text-white text-center font-bold text-lg">
@@ -36,4 +36,4 @@ const Documentpage = () => {
   );
 };
 
-export default Documentpage;
+export default DocumentsPage;

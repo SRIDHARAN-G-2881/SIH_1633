@@ -57,6 +57,8 @@ const Login = () => {
     if (match) {
       let formattedDob = "";
       if (match[1]) formattedDob += match[1];
+      if (match[3]) formattedDob += `/${match[3]}`;
+      if (match[5]) formattedDob += `/${match[5]}`;
       setDob(formattedDob);
     }
   };
