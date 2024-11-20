@@ -25,12 +25,32 @@ const HomePage = () => {
           />
           <ProfileCard
             name="BBB"
-            role="BE CSE"
+            role="FULLSTACK"
+            company="abc"
             onProfileClick={() => console.log("Navigating to profile page")}
           />
           <ProfileCard
             name="CCC"
-            role="BE CSE"
+            role="WEDDEVELOPEMENT"
+            company="Info"
+            onProfileClick={() => console.log("Navigating to profile page")}
+          />
+          <ProfileCard
+            name="DDD"
+            role="Datascientist"
+            company="Openai"
+            onProfileClick={() => console.log("Navigating to profile page")}
+          />
+          <ProfileCard
+            name="EEE"
+            role="Daatbase management"
+            company="Mngo"
+            onProfileClick={() => console.log("Navigating to profile page")}
+          />
+          <ProfileCard
+            name="FFF"
+            role="Business Analyst"
+            company="AK"
             onProfileClick={() => console.log("Navigating to profile page")}
           />
         </div>

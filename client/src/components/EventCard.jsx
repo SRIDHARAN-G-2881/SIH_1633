@@ -29,6 +29,8 @@ const EventCard = ({ time, date, title }) => {
         <div>
           <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
         </div>
+        <br></br>
+
         <button
           className="mt-auto bg-gray-800 text-white text-sm px-6 py-2 rounded-lg shadow hover:bg-gray-900"
           onClick={handleHistoryClick}
