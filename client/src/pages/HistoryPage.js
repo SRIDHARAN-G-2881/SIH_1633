@@ -31,6 +31,26 @@ const HistoryPage = () => {
               Documents
             </button>
           </div>
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-xl font-bold text-gray-800">Openview on the AI Developement</h2>
+            <p className="text-gray-600 mt-2">Sunday, 12 Apr 2023</p>
+            <button
+              onClick={() => navigate('/documents')} // Navigate to DocumentsPage
+              className="bg-blue-500 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-600 mt-4"
+            >
+              Documents
+            </button>
+          </div>
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-xl font-bold text-gray-800">Introduction to the BusinessEthics</h2>
+            <p className="text-gray-600 mt-2">Monday, 22 jul 2024</p>
+            <button
+              onClick={() => navigate('/documents')} // Navigate to DocumentsPage
+              className="bg-blue-500 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-600 mt-4"
+            >
+              Documents
+            </button>
+          </div>
         </div>
       </main>
       <Navbar />
