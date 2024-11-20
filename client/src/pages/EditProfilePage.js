@@ -9,7 +9,7 @@ const EditProfilePage = () => {
         <div className="flex flex-col items-center mb-6">
           <div className="w-24 h-24 bg-gray-200 rounded-full overflow-hidden mb-4">
             <img
-              src="https://via.placeholder.com/100"
+              src=""
               alt="Profile"
               className="w-full h-full object-cover"
             />
