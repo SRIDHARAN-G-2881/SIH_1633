@@ -1,68 +1,77 @@
 import React from "react";
-import "./StudentHomePage.css";
 
 const StudentHomePage = () => {
   return (
-    <div className="home-page">
+    <div className="min-h-screen bg-gray-50 text-gray-800">
       {/* Header Section */}
-      <header className="header">
-        <h1>Welcome, [Student Name]!</h1>
-        <p>
+      <header className="bg-blue-600 text-white p-8">
+        <h1 className="text-3xl font-bold">Welcome, [Student Name]!</h1>
+        <p className="mt-2 text-lg">
           Connect with our alumni community, seek guidance, and explore
           opportunities to shape your future.
         </p>
       </header>
 
       {/* AI-Powered Suggestions Section */}
-      <section className="ai-suggestions">
-        <h2>Recommended Connections</h2>
-        <p>
+      <section className="py-8 px-6">
+        <h2 className="text-2xl font-semibold text-blue-600">Recommended Connections</h2>
+        <p className="mt-2 text-gray-700">
           Based on your interests and career goals, here are some alumni you
           might want to connect with:
         </p>
-        <div className="suggestions-container">
-          <div className="alumni-card">
-            <h3>John Doe</h3>
-            <p>Software Engineer at Google</p>
-            <p>Specialization: AI & Machine Learning</p>
-            <button>Connect</button>
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="p-4 bg-white shadow rounded-lg">
+            <h3 className="text-xl font-semibold">John Doe</h3>
+            <p className="text-gray-700">Software Engineer at Google</p>
+            <p className="text-sm text-gray-500">Specialization: AI & Machine Learning</p>
+            <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+              Connect
+            </button>
           </div>
-          <div className="alumni-card">
-            <h3>Jane Smith</h3>
-            <p>Entrepreneur & Founder of TechStart</p>
-            <p>Specialization: Startups & Innovation</p>
-            <button>Connect</button>
+          <div className="p-4 bg-white shadow rounded-lg">
+            <h3 className="text-xl font-semibold">Jane Smith</h3>
+            <p className="text-gray-700">Entrepreneur & Founder of TechStart</p>
+            <p className="text-sm text-gray-500">Specialization: Startups & Innovation</p>
+            <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+              Connect
+            </button>
           </div>
         </div>
       </section>
 
       {/* Quick Links Section */}
-      <section className="quick-links">
-        <h2>Quick Links</h2>
-        <div className="links-container">
-          <a href="/alumni-directory" className="link-card">
-            <h3>Alumni Directory</h3>
-            <p>Explore profiles of alumni and their achievements.</p>
+      <section className="py-8 px-6 bg-gray-100">
+        <h2 className="text-2xl font-semibold text-blue-600">Quick Links</h2>
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <a href="/alumni-directory" className="p-4 bg-white shadow rounded-lg hover:shadow-lg">
+            <h3 className="text-lg font-semibold text-blue-600">Alumni Directory</h3>
+            <p className="text-sm text-gray-600">
+              Explore profiles of alumni and their achievements.
+            </p>
           </a>
-          <a href="/mentorship" className="link-card">
-            <h3>Mentorship Programs</h3>
-            <p>Get personalized guidance from alumni.</p>
+          <a href="/mentorship" className="p-4 bg-white shadow rounded-lg hover:shadow-lg">
+            <h3 className="text-lg font-semibold text-blue-600">Mentorship Programs</h3>
+            <p className="text-sm text-gray-600">Get personalized guidance from alumni.</p>
           </a>
-          <a href="/forums" className="link-card">
-            <h3>Discussion Forums</h3>
-            <p>Join conversations and learn from experiences.</p>
+          <a href="/forums" className="p-4 bg-white shadow rounded-lg hover:shadow-lg">
+            <h3 className="text-lg font-semibold text-blue-600">Discussion Forums</h3>
+            <p className="text-sm text-gray-600">
+              Join conversations and learn from experiences.
+            </p>
           </a>
-          <a href="/events" className="link-card">
-            <h3>Upcoming Events</h3>
-            <p>Attend alumni meetups, webinars, and more.</p>
+          <a href="/events" className="p-4 bg-white shadow rounded-lg hover:shadow-lg">
+            <h3 className="text-lg font-semibold text-blue-600">Upcoming Events</h3>
+            <p className="text-sm text-gray-600">
+              Attend alumni meetups, webinars, and more.
+            </p>
           </a>
         </div>
       </section>
 
       {/* Recent Interactions Section */}
-      <section className="recent-interactions">
-        <h2>Recent Interactions</h2>
-        <ul className="interaction-list">
+      <section className="py-8 px-6">
+        <h2 className="text-2xl font-semibold text-blue-600">Recent Interactions</h2>
+        <ul className="mt-4 list-disc list-inside text-gray-700">
           <li>
             <strong>John Doe</strong> conducted a webinar on <em>AI & Careers</em>.
           </li>
@@ -74,24 +83,31 @@ const StudentHomePage = () => {
             <strong>Alumni Panel</strong> discussed <em>Industry Trends 2024</em>.
           </li>
         </ul>
-        <a href="/interactions" className="view-all">
+        <a
+          href="/interactions"
+          className="mt-4 inline-block text-blue-600 hover:underline"
+        >
           View All Interactions
         </a>
       </section>
 
       {/* AI Chatbot Section */}
-      <section className="chatbot">
-        <h2>Need Help?</h2>
-        <p>
+      <section className="py-8 px-6 bg-gray-100">
+        <h2 className="text-2xl font-semibold text-blue-600">Need Help?</h2>
+        <p className="mt-2 text-gray-700">
           Ask our AI-powered assistant for help navigating the platform, finding
           alumni, or getting career advice.
         </p>
-        <button className="chatbot-btn">Chat with Assistant</button>
+        <button className="mt-4 bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700">
+          Chat with Assistant
+        </button>
       </section>
 
       {/* Footer */}
-      <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} Technical Education Dept., Rajasthan</p>
+      <footer className="py-4 bg-blue-600 text-white text-center">
+        <p>
+          &copy; {new Date().getFullYear()} Technical Education Dept., Rajasthan
+        </p>
       </footer>
     </div>
   );
