@@ -8,6 +8,7 @@ import DocumentsPage from "./pages/DocumentsPage"; // Documents Section
 import ProfilePage from "./pages/ProfilePage"; // View Profile
 import EditProfilePage from "./pages/EditProfilePage"; // Edit Profile
 import ScheduleMeetPage from "./pages/ScheduleMeetPage"; // Schedule Meet
+import AlumniDirectory from "./pages/alumnidirectory";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/home" element={<HomePage />} />
 
           {/* Student Pages */}
+          <Route path='/alumnidirectory' element={<AlumniDirectory/>}/>
           <Route path="/student-home" element={<StudentHomePage />} />
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/documents" element={<DocumentsPage />} />

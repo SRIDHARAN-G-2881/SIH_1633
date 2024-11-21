@@ -1,7 +1,31 @@
 import React from "react";
+import axios from "axios"
+const handledirectory=async (req,res)=>{
+  try{
+    console.log("directtt")
+   const directory=await axios.get('http://localhost:3000/getAlumni');
+   localStorage.setItem("alumniData", JSON.stringify(directory.data));
+   window.location.href = "/alumnidirectory";
+   console.log(directory);
+  }catch(error){
+    console.log(error);
+  }
+}
 
+const Handlesubmit=async (req,res)=>{
+  try{
+  const response = await axios.get("http://localhost:5000/connect");
+   
+   console.log(response); 
+
+  }
+  catch(error){
+      console.log(error);
+  }
+}
 const StudentHomePage = () => {
   return (
+   
     <div className="min-h-screen bg-gray-50 text-gray-800">
       {/* Header Section */}
       <header className="bg-blue-600 text-white p-8">
@@ -24,7 +48,7 @@ const StudentHomePage = () => {
             <h3 className="text-xl font-semibold">John Doe</h3>
             <p className="text-gray-700">Software Engineer at Google</p>
             <p className="text-sm text-gray-500">Specialization: AI & Machine Learning</p>
-            <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+            <button onClick={Handlesubmit} className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
               Connect
             </button>
           </div>
@@ -43,12 +67,10 @@ const StudentHomePage = () => {
       <section className="py-8 px-6 bg-gray-100">
         <h2 className="text-2xl font-semibold text-blue-600">Quick Links</h2>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          <a href="/alumni-directory" className="p-4 bg-white shadow rounded-lg hover:shadow-lg">
-            <h3 className="text-lg font-semibold text-blue-600">Alumni Directory</h3>
+           <button  onClick={handledirectory} className="bg-slate-900 text-lg font-semibold text-blue-600">Alumni Directory</button>
             <p className="text-sm text-gray-600">
               Explore profiles of alumni and their achievements.
             </p>
-          </a>
           <a href="/mentorship" className="p-4 bg-white shadow rounded-lg hover:shadow-lg">
             <h3 className="text-lg font-semibold text-blue-600">Mentorship Programs</h3>
             <p className="text-sm text-gray-600">Get personalized guidance from alumni.</p>

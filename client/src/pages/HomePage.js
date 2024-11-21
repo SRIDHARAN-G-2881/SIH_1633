@@ -17,7 +17,7 @@ const HomePage = () => {
           onHistoryClick={() => console.log("Navigating to event history")}
         />
         <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <ProfileCard
+          <ProfileCard 
             name="AAA"
             role="Blockchain | AI expert"
             company="Wipro.inc"
@@ -35,6 +35,12 @@ const HomePage = () => {
             company="Info"
             onProfileClick={() => console.log("Navigating to profile page")}
           />
+          <ProfileCard
+            name="SRI"
+            role="AIML"
+            company="TCS"
+          />
+
           <ProfileCard
             name="DDD"
             role="Datascientist"
