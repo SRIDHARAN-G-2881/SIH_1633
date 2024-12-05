@@ -9,6 +9,16 @@ const stu=new Schema({
         type:String,
         require:true
       },
+      Department:{
+        type:String,
+        required:true,
+        unique:false
+      },
+      password:{
+          type:String,
+          require:true,
+          unique:true
+      },
       email:{
         type:String,
         require:true

@@ -1,35 +1,40 @@
 import React from "react";
-import axios from "axios"
-const handledirectory=async (req,res)=>{
-  try{
-    console.log("directtt")
-   const directory=await axios.get('http://localhost:3000/getAlumni');
-   localStorage.setItem("alumniData", JSON.stringify(directory.data));
-   window.location.href = "/alumnidirectory";
-   console.log(directory);
-  }catch(error){
+import axios from "axios";
+
+// Function to handle Alumni directory button click
+const handledirectory = async (req, res) => {
+  try {
+    console.log("directtt");
+    const directory = await axios.get('http://localhost:3000/getAlumni');
+    console.log(directory);
+    localStorage.setItem("alumniData", JSON.stringify(directory.data));
+    window.location.href = "/alumnidirectory";
+    console.log(directory);
+  } catch (error) {
     console.log(error);
   }
-}
+};
 
-const Handlesubmit=async (req,res)=>{
-  try{
-  const response = await axios.get("http://localhost:5000/connect");
-   
-   console.log(response); 
+// Function to handle submit action for connection (example placeholder)
+const Handlesubmit = async (req, res) => {
+  try {
+    const response = await axios.get("http://localhost:5000/connect");
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-  }
-  catch(error){
-      console.log(error);
-  }
-}
 const StudentHomePage = () => {
+  // Retrieve the student name from localStorage
+  const userName = localStorage.getItem("userName");
+
   return (
-   
     <div className="min-h-screen bg-gray-50 text-gray-800">
       {/* Header Section */}
       <header className="bg-blue-600 text-white p-8">
-        <h1 className="text-3xl font-bold">Welcome, [Student Name]!</h1>
+        {/* Display the student's name */}
+        <h1 className="text-3xl font-bold">Welcome, {userName}!</h1>
         <p className="mt-2 text-lg">
           Connect with our alumni community, seek guidance, and explore
           opportunities to shape your future.
@@ -67,10 +72,11 @@ const StudentHomePage = () => {
       <section className="py-8 px-6 bg-gray-100">
         <h2 className="text-2xl font-semibold text-blue-600">Quick Links</h2>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-           <button  onClick={handledirectory} className="bg-slate-900 text-lg font-semibold text-blue-600">Alumni Directory</button>
-            <p className="text-sm text-gray-600">
-              Explore profiles of alumni and their achievements.
-            </p>
+          <button onClick={handledirectory} className="border-4  text-lg font-semibold text-blue-600">Alumni Directory
+          <p className="text-sm text-gray-600">
+            Explore profiles of alumni and their achievements.
+          </p>
+          </button>
           <a href="/mentorship" className="p-4 bg-white shadow rounded-lg hover:shadow-lg">
             <h3 className="text-lg font-semibold text-blue-600">Mentorship Programs</h3>
             <p className="text-sm text-gray-600">Get personalized guidance from alumni.</p>

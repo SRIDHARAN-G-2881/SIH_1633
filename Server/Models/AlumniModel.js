@@ -10,9 +10,10 @@ const alumni= new schema({
          require:true,
          unique:true
      },
-     JobRole:{
+     password:{
         type:String,
         require:true,
+        unique:true
      },
      email:{
           type:String,
@@ -23,6 +24,10 @@ const alumni= new schema({
          type:Number,
          require:true,
          unique:true
+     },
+     JobRole:{
+        type:String,
+        require:true,
      },
      location:{
         type:String,

@@ -12,6 +12,14 @@ const connectionSchema = new mongoose.Schema(
       ref: 'AlumniModel', // Assumes you have an Alumni model
       required: true,
     },
+    studentName:{
+       type:String,
+       required:true
+    },
+    AlumniName:{
+      type:String,
+      required:false
+    },
     status: {
       type: String,
       enum: ['pending', 'accepted', 'rejected'],

@@ -1,48 +1,60 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useUser } from "./usercontext.jsx";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [requests, setRequests] = useState([]);
-  const adminId = "al1"; // Example: adminId
+  const { userId } = useUser(); // Get the logged-in user ID from context
+
+  const fetchRequests = async () => {
+    if (userId) {
+      try {
+        const response = await axios.get(`http://localhost:3000/getrequest/${userId}`);
+        setRequests(response.data); // Update state with fetched requests
+      } catch (error) {
+        console.error("Error fetching requests:", error.response ? error.response.data : error.message);
+      }
+    }
+  };
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
     if (!isSidebarOpen) {
-      fetchPendingRequests(); // Fetch data when sidebar opens
+      fetchRequests(); // Fetch requests when opening the sidebar
     }
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const fetchPendingRequests = async () => {
+  const handleAction = async (studentId, alumniId, action) => {
     try {
-      // Send GET request to the backend to fetch pending requests for this admin
-      const response = await axios.get(`http://localhost:3000/getrequest/${adminId}`);
-      setRequests(response.data); // Assuming response is an array of requests
-    } catch (error) {
-      console.error("Error fetching requests:", error);
-    }
-  };
-
-  const handleAction = async (requestId, action) => {
-    try {
-      const response = await axios.post("http://localhost:3000/updateRequest", {
-        requestId,
-        action, // 'Approved' or 'Rejected'
+      // Send the request to the backend with studentId, alumniId, and action
+      const response = await axios.post('http://localhost:3000/updateRequest', {
+        alumniId: alumniId,
+        studentId: studentId,
+        action: action,
       });
-      alert(response.data.message); // Show success message
-      fetchPendingRequests(); // Refresh the list of requests
+  
+      // Optionally update the UI with the new status
+      setRequests((prevRequests) =>
+        prevRequests
+          .filter((req) => !(req.studentId === studentId && req.alumniId === alumniId)) // Remove the request from the list
+      );
+  
+      // Display a message confirming the action
+      alert(`Connection request has been ${action === 'Approved' ? 'accepted' : 'rejected'}`);
+  
+      console.log('Request updated:', response.data);
     } catch (error) {
-      console.error("Error updating request:", error);
+      console.error("Error updating request:", error.response ? error.response.data : error.message);
     }
   };
+  
 
   return (
     <div>
       {/* Header Section */}
       <header className="bg-gray-800 text-white py-4 px-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold">SIWA</h1>
-
-        {/* Button to open sidebar */}
         <button
           onClick={toggleSidebar}
           className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-500"
@@ -53,9 +65,9 @@ const Header = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-gray-900 text-white p-6 transform ${
+        className={`fixed top-0 right-0 h-screen w-64 bg-gray-900 text-white p-6 transform ${
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out z-50`}
+        } transition-transform duration-300 ease-in-out z-50 overflow-y-auto`}
       >
         <button
           onClick={toggleSidebar}
@@ -69,40 +81,38 @@ const Header = () => {
         <ul>
           {requests.length > 0 ? (
             requests.map((req) => (
-              <li
-                key={req.id}
-                className="mb-4 p-4 bg-gray-800 rounded-lg shadow-md"
-              >
-                <h4 className="font-bold">Student ID: {req.studentId}</h4>
-                <p className="text-sm text-gray-400">Message: {req.message}</p>
-                <p className="text-sm text-gray-400">Status: {req.status}</p>
-
-                {/* Approve/Reject Buttons */}
+              <li key={req.id} className="mb-4 p-4 bg-gray-800 rounded-lg shadow-md">
+                <h4 className="font-bold text-lg">
+                  {req.studentName} ({req.studentId})
+                </h4>
+                <p className="text-sm text-gray-300 mt-1">{req.message}</p>
+                <p className="text-sm text-gray-400 mt-1">Status: {req.status}</p>
                 <div className="mt-2 flex space-x-2">
+                <button
+               className="bg-green-600 text-white w-full py-2 rounded-lg hover:bg-green-700 text-sm font-medium"
+               onClick={() => handleAction(req.studentId,userId,"Approved")}
+                
+               >
+                Approve
+                 </button>
                   <button
-                    className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
-                    onClick={() => handleAction(req.id, "Approved")}
-                    disabled={req.status !== "Pending"}
-                  >
-                    Approve
-                  </button>
-                  <button
-                    className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
-                    onClick={() => handleAction(req.id, "Rejected")}
-                    disabled={req.status !== "Pending"}
-                  >
-                    Reject
-                  </button>
-                </div>
+                className="bg-red-600 text-white w-full py-2 rounded-lg hover:bg-red-700 text-sm font-medium"
+                 onClick={() => handleAction(req.studentId,userId, "Rejected")}
+
+                     >
+                   Reject
+                    </button>
+                        </div>
+
               </li>
             ))
           ) : (
-            <p>No pending requests.</p>
+            <p className="text-gray-400">No pending requests found.</p>
           )}
         </ul>
       </div>
 
-      {/* Backdrop (optional) */}
+      {/* Backdrop */}
       {isSidebarOpen && (
         <div
           onClick={toggleSidebar}
